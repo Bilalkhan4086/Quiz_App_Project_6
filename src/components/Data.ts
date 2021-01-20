@@ -9,7 +9,7 @@ const suffle = (obj: string[]) => {
 }
 
 
-export const Fetchdata = async (q: String, cat: String, level: String): Promise<QuestionData[]> => {
+export const Fetchdata = async (q: number, cat: String, level: String): Promise<QuestionData[]> => {
 
 
   // fetching data in res and passing it to AllData in json format

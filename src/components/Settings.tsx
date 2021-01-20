@@ -9,7 +9,7 @@ const Settings:React.FC<SettingTypes> = ({get,setTata}) => {
 
 const [Fname, setFname]= useState('');
 const [Email, setEmail] = useState('');
-const [Q , setQ] = useState("10");
+const [Q , setQ] = useState(10);
 const [Level, setLevel] = useState('easy');
 const [Cat, setCat] = useState('9');
 
@@ -23,6 +23,11 @@ const details = {
   Level:Level
 }
 
+// function handle is created to get value of textfeild with id = noofquestions
+
+const handle = (e:any) =>{
+setQ(e.target.value)
+}
 
 return (
 <div>
@@ -39,7 +44,7 @@ return (
               <br/><br/>
               <TextField type="text" required={true} id="email" onChange={(e)=>{setEmail(e.target.value)}} style={{width:"100%"}} label="Email" />
               <br/><br/>
-              <TextField type="number" required={true} id="noofquestions" value={Q} onChange={(e)=>{setQ(e.target.value)}} style={{width:"100%"}} label="No. of Questions" />
+              <TextField type="number" required={true} id="noofquestions" value={Q} onChange={handle} style={{width:"100%"}} label="No. of Questions" />
                <br/><br/>
               <FormControl required={true} style={{width:"100%",textAlign:"left"}}>
                 <InputLabel id="quiztype">Diffulty level</InputLabel>
@@ -59,7 +64,7 @@ return (
                 </Select>
               </FormControl><br/><br/><br/>
               <Link style={{textDecoration:"none",color:"white"}} to="/quiz">
-                <Button disabled={(Fname === '') || (Email === '') || (Q === '' || Q === '0') || (Cat === '') || (Level === '')} variant="contained" style={{width:"50%"}} onClick={async()=>{setTata(await Fetchdata(Q,Cat,Level));get(details)}} color="secondary">
+                <Button disabled={(Fname === '') || (Email === '') || (Q <= 0 || Q > 50) || (Cat === '') || (Level === '')} variant="contained" style={{width:"50%"}} onClick={async()=>{setTata(await Fetchdata(Q,Cat,Level));get(details)}} color="secondary">
                   Start Quiz
                 </Button>
               </Link>

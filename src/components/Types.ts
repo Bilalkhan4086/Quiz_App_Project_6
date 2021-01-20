@@ -46,7 +46,7 @@ export type SettingTypes = {
 export type details = {
     name: string,
     email: string,
-    NoOfQuestions: string,
+    NoOfQuestions: number,
     Cat: string,
     Level: string
 }
